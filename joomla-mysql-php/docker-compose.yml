@@ -1,0 +1,36 @@
+version: '3'
+services:
+        mysql:
+                image: mysql:5.7
+                volumes:
+                        - mysql_server_new:/var/lib/mysql
+                restart: always
+                environment:
+                        - MYSQL_ROOT_PASSWORD=shiv@21
+                        - MYSQL_USER=shivanvitha
+                        - MYSQL_PASSWORD=shiv@21
+                        - MYSQL_DATABASE=joomla
+        joomla:
+                image: joomla:latest
+                links:
+                        - mysql
+                ports:
+                        - 80:80
+                environment:
+                        - JOOMLA_DB_PASSWORD=shiv@21
+                        - JOOMLA_DB_HOST=mysql:3306
+                volumes:
+                        - joomla_new:/var/www/html
+        phpmyadmin:
+                image: phpmyadmin/phpmyadmin:4.6.4-1
+                links:
+                        - mysql
+                ports:
+                        - 81:80
+                environment:
+                        - PMA_HOST=mysql
+
+volumes:
+        mysql_server_new:
+        joomla_new:
+
