@@ -23,7 +23,7 @@ After step (1) and (2), run the below commands:
     IP registry.npmjs.org [ add this line to the file and save it ]
   ```
    
-If you are unable to run Joomla, I suggest you to remove all the docker images by using 
+If you are unable to run Joomla, I suggest you to remove all the containers by using 
 ```docker rm -f $(docker ps -a -q)``` 
 and retry.
 
